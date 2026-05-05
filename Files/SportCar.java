@@ -2,10 +2,15 @@ package demo.spring.application;
 
 public class SportCar implements Car {
       String owner;
+      Tyre tyre;
+      // constructor DI 
+      SportCar(Tyre tyre){
+		   this.tyre = tyre;
+	}
 	@Override
 	public void getInfo() {
 		// TODO Auto-generated method stub
-		System.out.println(this.owner+" owns A Sport Car");
+		System.out.println(this.owner+" owns A Sport Car "+tyre.getTyreInfo());
 	}
 
 	@Override

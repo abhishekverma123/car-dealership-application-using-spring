@@ -12,22 +12,29 @@ public class Application {
 	public static void main(String[] args) {
 		//SpringApplication.run(Application.class, args);
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Hi, Please Enter your name");
-		String name = sc.next();
-		String beanId = "";
-		
-		     
-		 
 		   while(true) {
+			   Scanner sc = new Scanner(System.in);
+				System.out.println("Hi, Please Enter your name");
+				String name = sc.next();
+				String beanId = "";
+			   
 		System.out.println("Please Select your car of choice \n1) Family Car\n2) Sports Car\n3) Truck");
 		  int  choice = sc.nextInt();
 		   switch(choice) {
-		   case 1 ->     beanId = "familyCar";
+		   case 1 -> {  System.out.println("Please Select which type of tyre want to inject\n1) Normal Tyre\n2) Sport Tyre");
+		                 choice = sc.nextInt();
+		                 switch(choice) {
+		                 case 1 -> beanId = "familyCarWithNormalTyre";
+		                 case 2 -> beanId = "familyCarWithSportTyre";
+		                 default -> System.out.println("Error");
+		                 }
+		   }
 		   case 2 -> beanId = "sportCar";
 		   case 3 ->  beanId = "truck";
 		   default  -> { System.out.println("Invalid Choice ");
-		                  continue;
+		                  sc.close();
+		                  context.close();
+		                 return;
 		               }
 		   }
 		       
