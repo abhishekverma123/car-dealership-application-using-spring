@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+    <bean id = "normalTyre" class = "demo.spring.application.NormalTyre"></bean>
+    <bean id = "sportTyre" class = "demo.spring.application.SportTyre"></bean>
+    <bean id = "heavyTyre" class = "demo.spring.application.HeavyTyre"></bean>
+   
+    
+    
+    <!-- config the beans IN application context-->
+    
+    <bean id = "familyCarWithNormalTyre" class = "demo.spring.application.NormalCar"> 
+       <constructor-arg ref = "normalTyre"></constructor-arg>
+    </bean>
+    <bean id = "familyCarWithSportTyre" class = "demo.spring.application.NormalCar"> 
+       <constructor-arg ref = "sportTyre"></constructor-arg>
+    </bean>
+    
+    <bean id = "sportCarWithSportTyre" class = "demo.spring.application.SportCar">
+    <property name = "tyre" ref ="sportTyre"></property>
+    </bean>
+    <bean id = "sportCarWithHeavyTyre" class = "demo.spring.application.SportCar">
+    <property name = "tyre" ref ="heavyTyre"></property>
+    </bean>
+    <bean id = "truck" class = "demo.spring.application.Truck">
+    <constructor-arg ref = "heavyTyre"></constructor-arg>
+    </bean>
+    
+</beans>

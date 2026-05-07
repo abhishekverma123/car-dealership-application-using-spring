@@ -1,12 +1,18 @@
 package demo.spring.application;
 
 public class SportCar implements Car {
-      String owner;
+     
+
+	  String owner;
       Tyre tyre;
       // constructor DI 
-      SportCar(Tyre tyre){
-		   this.tyre = tyre;
-	}
+//      SportCar(Tyre tyre){
+//		   this.tyre = tyre;
+//	}
+      // DI using setter method
+      public void setTyre(Tyre tyre) {
+  		this.tyre = tyre;
+  	}
 	@Override
 	public void getInfo() {
 		// TODO Auto-generated method stub
